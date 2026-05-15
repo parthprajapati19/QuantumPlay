@@ -1,0 +1,144 @@
+/* ============================================================
+   FOOTER SECTION — footer.css
+   Quantum Play | Online Game Store
+   ============================================================ */
+
+.footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 56px 60px 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background glow */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--accent), transparent);
+  pointer-events: none;
+}
+
+/* ---- Grid layout ---- */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+/* ---- Brand column ---- */
+.footer-brand .logo-text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 12px;
+  display: block;
+  color: var(--text);
+}
+
+.footer-brand p {
+  color: var(--text-dim);
+  font-size: .88rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+/* Social icons */
+.footer-socials {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-dim);
+  font-size: .9rem;
+  text-decoration: none;
+  transition: border-color .2s, color .2s, background .2s, transform .2s;
+}
+.footer-social:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: rgba(155,77,255,.12);
+  transform: translateY(-2px);
+}
+
+/* ---- Link columns ---- */
+.footer-col h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  position: relative;
+}
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.footer-col a {
+  display: block;
+  color: var(--text-dim);
+  font-size: .88rem;
+  margin-bottom: 9px;
+  transition: color .2s, padding-left .2s;
+  text-decoration: none;
+}
+.footer-col a:hover {
+  color: var(--accent);
+  padding-left: 4px;
+}
+
+/* ---- Bottom bar ---- */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: .82rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-bottom span:last-child {
+  color: var(--text-dim);
+  transition: color .2s;
+}
+.footer-bottom span:last-child:hover { color: var(--accent2); }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .footer         { padding: 40px 24px 24px; }
+  .footer-grid    { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .footer-brand   { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .footer-grid    { grid-template-columns: 1fr; }
+  .footer-bottom  { flex-direction: column; text-align: center; }
+}

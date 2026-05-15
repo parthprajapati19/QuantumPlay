@@ -1,0 +1,235 @@
+/* ============================================================
+   GAME CARD & CATEGORY SECTION — game-card.css
+   Quantum Play | Online Game Store
+   ============================================================ */
+
+/* ---- Games section wrapper ---- */
+.games-section {
+  padding: 40px 40px 20px;
+}
+
+/* ---- Category header ---- */
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.cat-icon { font-size: 1.3rem; }
+
+.see-all-btn {
+  flex-shrink: 0;
+  padding: 7px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: .85rem;
+  font-weight: 600;
+  background: var(--surface);
+  transition: border-color .2s, color .2s, background .2s;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  white-space: nowrap;
+}
+.see-all-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(0,245,255,.06);
+}
+
+/* ---- Horizontal scrolling cards row ---- */
+.cards-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  margin-bottom: 40px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.cards-row::-webkit-scrollbar        { height: 4px; }
+.cards-row::-webkit-scrollbar-thumb  { background: var(--primary); border-radius: 2px; }
+.cards-row::-webkit-scrollbar-track  { background: transparent; }
+
+/* ---- Game Card ---- */
+.game-card {
+  width: 200px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  transition:
+    transform .3s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .3s,
+    border-color .3s;
+  user-select: none;
+}
+.game-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--primary);
+  box-shadow: var(--glow);
+}
+
+/* ---- Card image area ---- */
+.card-img-wrap {
+  position: relative;
+  width: 200px;
+  height: 270px;
+  overflow: hidden;
+}
+.card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s;
+  display: block;
+}
+.game-card:hover .card-img-wrap img { transform: scale(1.06); }
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 55%, rgba(0,0,0,.85));
+  pointer-events: none;
+}
+
+/* ---- Badge (FREE / NEW / HOT) ---- */
+.card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+  background: var(--accent2);
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  pointer-events: none;
+}
+.card-badge.free { background: var(--green); color: #000; }
+.card-badge.new  { background: var(--accent); color: #000; }
+
+/* ---- Wishlist icon button ---- */
+.wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: .85rem;
+  opacity: 0;
+  transform: scale(.8);
+  transition: opacity .25s, transform .25s, color .2s, border-color .2s;
+  border: 1px solid rgba(255,255,255,.2);
+  cursor: pointer;
+}
+.game-card:hover .wishlist-btn { opacity: 1; transform: scale(1); }
+.wishlist-btn.wishlisted {
+  opacity: 1;
+  transform: scale(1);
+  color: var(--accent2);
+  border-color: var(--accent2);
+  background: rgba(255,77,255,.15);
+}
+
+/* ---- Add-to-cart icon button ---- */
+.add-cart-btn {
+  position: absolute;
+  bottom: 58px;
+  right: 10px;
+  z-index: 3;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1rem;
+  opacity: 0;
+  transform: scale(.8);
+  transition: opacity .25s, transform .25s, background .2s;
+  box-shadow: 0 4px 12px rgba(155,77,255,.5);
+  cursor: pointer;
+}
+.game-card:hover .add-cart-btn { opacity: 1; transform: scale(1); }
+.add-cart-btn:hover { background: var(--primary-d); }
+
+/* ---- Card body (below image) ---- */
+.card-body {
+  padding: 10px 12px 12px;
+  background: var(--card-bg);
+}
+
+.card-name {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Rating progress bar */
+.rating-bar-wrap {
+  margin: 4px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.rating-bar-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(155,77,255,.18);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.rating-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #9b4dff, #00f5ff);
+  border-radius: 3px;
+  transition: width .4s ease;
+}
+.rating-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rating-stars { font-size: .68rem; color: #ffd700; letter-spacing: 1px; }
+.rating-num   { font-size: .72rem; font-weight: 700; color: #ffd700; }
+
+/* Price row */
+.card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.card-price         { font-size: .82rem; font-weight: 700; color: var(--green); }
+.card-price.free-tag { color: var(--accent); }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .games-section { padding: 30px 20px 10px; }
+}
+
+@media (max-width: 600px) {
+  .game-card       { width: 165px; }
+  .card-img-wrap   { width: 165px; height: 220px; }
+}

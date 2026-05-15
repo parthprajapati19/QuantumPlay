@@ -1,0 +1,199 @@
+/* ============================================================
+   INFINITE CAROUSEL — carousel.css
+   Quantum Play | Online Game Store
+   ============================================================ */
+
+.carousel-section {
+  padding: 50px 0 0;
+  overflow: hidden;
+}
+
+/* ---- Section header ---- */
+.carousel-header {
+  padding: 0 40px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cat-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cat-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+}
+
+/* ---- Track wrapper ---- */
+.carousel-track-wrap {
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  padding: 4px 0;
+}
+.carousel-track-wrap:active { cursor: grabbing; }
+
+/* Fade edges */
+.carousel-track-wrap::before,
+.carousel-track-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 10;
+  pointer-events: none;
+}
+.carousel-track-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg), transparent);
+}
+.carousel-track-wrap::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg), transparent);
+}
+
+/* ---- Scrolling track ---- */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  padding: 10px 40px 20px;
+  width: max-content;
+  animation: scrollCarousel 36s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on hover */
+.carousel-track-wrap:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollCarousel {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ---- Carousel Card ---- */
+.carousel-card {
+  width: 260px;
+  flex-shrink: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  transition:
+    transform .35s cubic-bezier(.34,1.56,.64,1),
+    box-shadow .35s,
+    border-color .35s;
+}
+
+.carousel-track-wrap:hover .carousel-card:hover {
+  transform: scale(1.08);
+  border-color: var(--accent);
+  box-shadow:
+    0 0 30px rgba(0,245,255,.35),
+    0 16px 40px rgba(0,0,0,.5);
+  z-index: 5;
+}
+
+/* Image */
+.carousel-img {
+  width: 260px;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s;
+}
+.carousel-card:hover .carousel-img { transform: scale(1.05); }
+
+/* Gradient overlay */
+.carousel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 45%, rgba(0,0,0,.9));
+  pointer-events: none;
+}
+
+/* Info bar at bottom */
+.carousel-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px;
+}
+
+.carousel-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: .78rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carousel-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.carousel-price {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.carousel-rating {
+  font-size: .78rem;
+  color: #ffd700;
+}
+
+/* "View Game" button appears on hover */
+.carousel-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(155,77,255,.85);
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity .25s, transform .25s;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: 'Rajdhani', sans-serif;
+}
+.carousel-card:hover .carousel-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .carousel-header { padding: 0 20px 16px; }
+  .carousel-track  { padding: 10px 20px 20px; }
+}
+
+@media (max-width: 600px) {
+  .carousel-card  { width: 200px; }
+  .carousel-img   { width: 200px; height: 270px; }
+}
